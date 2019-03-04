@@ -11,8 +11,10 @@ class Neuron:
         print(value)
         if value > teta:
             return 1
-        else:
+        elif value <= teta and value >= teta:
             return 0
+        else:
+            return -1
 
     def train(self, datasets, epoch):
         for i in range(epoch):
@@ -35,12 +37,12 @@ class Neuron:
                 return
 
 
-df = pd.read_csv('data 4.csv', ';')
+df = pd.read_csv('data 3.csv', ';')
 norm_df = (df - df.min())/(df.max()-df.min())
-norm_df['target'] = df['target']
+# norm_df['target'] = df['target']
 
-norm_df['target'] = norm_df['target'].where(norm_df['target'] == 2, 0)
-norm_df['target'] = norm_df['target'].where(norm_df['target'] == 0, 1)
+# norm_df['target'] = norm_df['target'].where(norm_df['target'] == 2, 0)
+# norm_df['target'] = norm_df['target'].where(norm_df['target'] == 0, 1)
 
 perceptron = Neuron()
 
